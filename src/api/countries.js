@@ -38,8 +38,10 @@ export const getCountryByName = async (countryName) => {
   const response = await fetch(API_URL);
   const data = await response.json();
   const filtered = data.filter((country) => {
-    console.log({ api: country.name.official, countryName });
-    return country.name.official === countryName.countryName;
+    return (
+      country.name.official === countryName.countryName ||
+      country.name.official === countryName
+    );
   });
   const {
     population,
@@ -50,6 +52,7 @@ export const getCountryByName = async (countryName) => {
     name,
     capital,
     tld,
+    flags,
   } = filtered[0];
 
   const countryData = {
@@ -61,6 +64,7 @@ export const getCountryByName = async (countryName) => {
     name,
     capital,
     tld,
+    flag: flags.png,
   };
   console.log(countryData);
   return countryData;
