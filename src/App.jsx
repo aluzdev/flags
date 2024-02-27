@@ -14,20 +14,16 @@ function App() {
 
   const handleSearch = (e) => {
     const userInput = e.target.value;
-    if (userInput == "") {
-      setSearch("");
-      setFilteredCountries(null);
-    }
     setSearch(userInput);
 
-    setFilteredCountries(
-      countries.filter((country) =>
-        country.name.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-
-    console.log(filteredCountries);
-    console.log(userInput);
+    if (userInput === "") {
+      setFilteredCountries(null);
+    } else {
+      const filtered = countries.filter((country) =>
+        country.name.toLowerCase().includes(userInput.toLowerCase())
+      );
+      setFilteredCountries(filtered);
+    }
   };
 
   return (
