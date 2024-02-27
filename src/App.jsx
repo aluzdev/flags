@@ -8,6 +8,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredCountries, setFilteredCountries] = useState(null);
+
   useEffect(() => {
     getCountryData().then((countries) => setCountries(countries));
   }, []);
@@ -26,6 +27,24 @@ function App() {
     }
   };
 
+  // const handleDropdown = (e) => {
+  //   const currentRegion = e.target.value;
+  //   const filtered = countries.filter((country) =>
+  //     country.region.toLowerCase().includes(currentRegion.toLowerCase())
+  //   );
+  //   console.log(filtered);
+  // };
+
+  const handleFilter = (event) => {
+    const region = event.target.value;
+
+    const filtered = countries.filter((country) =>
+      country.region.includes(region)
+    );
+    console.log(filtered);
+    setFilteredCountries(filtered);
+  };
+
   return (
     <>
       <div className="flex justify-between text-white">
@@ -36,13 +55,16 @@ function App() {
           onChange={handleSearch}
           value={search}
         />
-        <select className="bg-slate-600 text-xl px-4 py-3 shadow-2xl">
+        <select
+          className="bg-slate-600 text-xl px-4 py-3 shadow-2xl"
+          onChange={handleFilter}
+        >
           <option value="">Filter by Region</option>
-          <option value="africa">Africa</option>
-          <option value="america">America</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
+          <option value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
       </div>
 
