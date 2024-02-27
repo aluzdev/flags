@@ -6,9 +6,29 @@ import { Cards } from "./component/Card";
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredCountries, setFilteredCountries] = useState(null);
   useEffect(() => {
     getCountryData().then((countries) => setCountries(countries));
   }, []);
+
+  const handleSearch = (e) => {
+    const userInput = e.target.value;
+    if (userInput == "") {
+      setSearch("");
+      setFilteredCountries(null);
+    }
+    setSearch(userInput);
+
+    setFilteredCountries(
+      countries.filter((country) =>
+        country.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+
+    console.log(filteredCountries);
+    console.log(userInput);
+  };
 
   return (
     <>
@@ -17,6 +37,8 @@ function App() {
           type="text"
           className="bg-slate-600 text-xl px-4 py-3 shadow-2xl shadow-zinc-950"
           placeholder="Search for a country..."
+          onChange={handleSearch}
+          value={search}
         />
         <select className="bg-slate-600 text-xl px-4 py-3 shadow-2xl">
           <option value="">Filter by Region</option>
@@ -30,16 +52,31 @@ function App() {
 
       <br />
       <div className="grid grid-cols-4 gap-8">
-        {countries.map(({ population, region, capital, name, flag, index }) => (
-          <Cards
-            key={index}
-            capital={capital}
-            population={population}
-            region={region}
-            name={name}
-            flag={flag}
-          />
-        ))}
+        {filteredCountries
+          ? filteredCountries.map(
+              ({ population, region, capital, name, flag }) => (
+                <Cards
+                  key={flag}
+                  capital={capital}
+                  population={population}
+                  region={region}
+                  name={name}
+                  flag={flag}
+                />
+              )
+            )
+          : countries.map(
+              ({ population, region, capital, name, flag, index }) => (
+                <Cards
+                  key={index}
+                  capital={capital}
+                  population={population}
+                  region={region}
+                  name={name}
+                  flag={flag}
+                />
+              )
+            )}
       </div>
     </>
   );
