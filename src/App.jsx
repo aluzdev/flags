@@ -12,7 +12,6 @@ function App() {
 
   return (
     <>
-      {/* < SingleView/> */}
       <div className="flex justify-between text-white">
         <input
           type="text"
@@ -31,8 +30,6 @@ function App() {
 
       <br />
       <div className="grid grid-cols-4 gap-8">
-        {/* countries.map(({capital, population, region})=> <Cards capital={capital} population={population} region={region} />)
-         */}
         {countries.map(({ population, region, capital, name, flag, index }) => (
           <Cards
             key={index}
