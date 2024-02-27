@@ -1,5 +1,6 @@
+const API_URL = "https://restcountries.com/v3.1/all";
 export const getCountryData = async () => {
-  const response = await fetch("https://restcountries.com/v3.1/all");
+  const response = await fetch(API_URL);
   const data = await response.json();
 
   const countries = data.map((country) => {
@@ -26,7 +27,41 @@ export const getCountryData = async () => {
       topLevelDomain: tld ? tld[0] || tld : null,
       flag: flags.png,
     };
+    console.log("de countries alv!!!", typeof countryData.name);
     return countryData;
   });
   return countries;
+};
+
+export const getCountryByName = async (countryName) => {
+  if (!countryName) return -1;
+  const response = await fetch(API_URL);
+  const data = await response.json();
+  const filtered = data.filter((country) => {
+    console.log({ api: country.name.official, countryName });
+    return country.name.official === countryName.countryName;
+  });
+  const {
+    population,
+    region,
+    subregion,
+    currencies,
+    languages,
+    name,
+    capital,
+    tld,
+  } = filtered[0];
+
+  const countryData = {
+    population,
+    region,
+    subregion,
+    currencies,
+    languages,
+    name,
+    capital,
+    tld,
+  };
+  console.log(countryData);
+  return countryData;
 };

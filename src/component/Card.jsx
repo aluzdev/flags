@@ -1,7 +1,11 @@
-export const Cards = ({ population, region, capital, name, flag }) => {
+// eslint-disable-next-line react/prop-types
+export const Card = ({ population, region, capital, name, flag, onClick }) => {
   return (
-    <div className="w-64 bg-slate-600 text-xs text-white font-semibold shadow-lg shadow-zinc-700 rounded-md">
-      <img src={flag} alt="" className="" />
+    <div
+      className="w-64 bg-slate-600 text-xs text-white font-semibold shadow-lg shadow-zinc-700 rounded-md"
+      onClick={onClick}
+    >
+      <img src={flag} alt="" className="w-64 h-48 object-cover" />
 
       <div className="p-3 ">
         <h3 className="font-bold mb-4 text-left text-sm">{name}</h3>
