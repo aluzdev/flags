@@ -54,7 +54,7 @@ export const Home = () => {
   };
   return (
     <>
-      <div className="flex justify-between text-white">
+      <div className="flex justify-between mb-7 mx-10 mt-12">
         <input
           type="text"
           className="bg-slate-50 text-xl px-4 py-3 shadow-2xl shadow-zinc-950 w-96"
@@ -63,7 +63,7 @@ export const Home = () => {
           value={search}
         />
         <select
-          className="bg-slate-50 text-xl px-4 py-3 shadow-2xl"
+          className="bg-slate-50 rounded-lg text-xl shadow-2xl px-8"
           onChange={handleFilter}
         >
           <option value="">Filter by Region</option>
@@ -76,7 +76,7 @@ export const Home = () => {
       </div>
 
       <br />
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-8 place-items-center">
         {filteredCountries
           ? filteredCountries.map(
               ({ population, region, capital, name, flag }) => (

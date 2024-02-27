@@ -2,7 +2,7 @@
 export const Card = ({ population, region, capital, name, flag, onClick }) => {
   return (
     <div
-      className="w-80 bg-slate-50 text-sm font-semibold shadow-lg shadow-zinc-700 rounded-lg"
+      className="w-80 bg-slate-50 text-sm font-semibold shadow-lg shadow-zinc-700 rounded-lg cursor-pointer"
       onClick={onClick}
     >
       <img src={flag} alt="" className="w-80 h-48 rounded-lg fit-cover" />

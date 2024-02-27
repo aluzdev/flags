@@ -20,10 +20,10 @@ export const SingleView = () => {
     <>
       {countryData ? (
         <div className="flex flex-row justify-center mt-10">
-          <div className="flex flex-row gap-8 w-9/12 bg-slate-50 rounded-lg">
+          <div className="flex flex-row gap-8 w-9/12 bg-slate-50 rounded-lg shadow-lg shadow-zinc-600">
             <img
               src={countryData.flag || "https://picsum.photos/300"} // Using a placeholder image if no flag URL
-              className="w-1/2 shadow-lg shadow-zinc-700"
+              className="w-1/2 "
               alt="Country Flag"
             />
             <div className="w-9/12 grid content-center">
