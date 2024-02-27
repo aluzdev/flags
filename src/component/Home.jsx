@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import { SingleView } from './component/singleView'
-import { getCountryData, getCountryByName } from "../api/countries";
+import { getCountryData } from "../api/countries";
 import { Card } from "./Card";
 import { useNavigate } from "react-router-dom";
 
@@ -57,13 +57,13 @@ export const Home = () => {
       <div className="flex justify-between text-white">
         <input
           type="text"
-          className="bg-slate-600 text-xl px-4 py-3 shadow-2xl shadow-zinc-950"
+          className="bg-slate-50 text-xl px-4 py-3 shadow-2xl shadow-zinc-950 w-96"
           placeholder="Search for a country..."
           onChange={handleSearch}
           value={search}
         />
         <select
-          className="bg-slate-600 text-xl px-4 py-3 shadow-2xl"
+          className="bg-slate-50 text-xl px-4 py-3 shadow-2xl"
           onChange={handleFilter}
         >
           <option value="">Filter by Region</option>

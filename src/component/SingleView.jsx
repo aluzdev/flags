@@ -19,8 +19,8 @@ export const SingleView = () => {
   return (
     <>
       {countryData ? (
-        <div className="flex flex-row justify-center">
-          <div className="flex flex-row gap-8 w-9/12">
+        <div className="flex flex-row justify-center mt-10">
+          <div className="flex flex-row gap-8 w-9/12 bg-slate-50 rounded-lg">
             <img
               src={countryData.flag || "https://picsum.photos/300"} // Using a placeholder image if no flag URL
               className="w-1/2 shadow-lg shadow-zinc-700"
@@ -33,61 +33,70 @@ export const SingleView = () => {
               {/* Updated to use common name */}
               <br />
               <div>
-                <ul className="grid grid-cols-2 font-light text-sm">
-                  <li>
+                <ul className="grid grid-cols-2 text-base font-semibold">
+                  <li className="flex flex-row">
                     Native Name:
-                    <p className="ml-2">
+                    <p className="ml-4 font-extralight">
                       {
                         Object.values(countryData.name.nativeName || {})[0]
                           ?.common
                       }
                     </p>
                   </li>
-                  <li>
-                    Population: <p className="ml-2">{countryData.population}</p>
+                  <li className="flex flex-row">
+                    Population:{" "}
+                    <p className="ml-4 font-extralight">
+                      {countryData.population}
+                    </p>
                   </li>
-                  <li>
-                    Region: <p className="ml-2">{countryData.region}</p>
+                  <li className="flex flex-row">
+                    Region:{" "}
+                    <p className="ml-4 font-extralight">{countryData.region}</p>
                   </li>
-                  <li>
-                    Sub Region: <p className="ml-2">{countryData.subregion}</p>
+                  <li className="flex flex-row">
+                    Sub Region:{" "}
+                    <p className="ml-4 font-extralight">
+                      {countryData.subregion}
+                    </p>
                   </li>
-                  <li>
+                  <li className="flex flex-row">
                     Capital:
                     <p className="ml-2">{countryData.capital?.join(", ")}</p>
                   </li>
-                  <li>
+                  <li className="flex flex-row">
                     Top Level Domain:
-                    <p className="ml-2">{countryData.tld?.join(", ")}</p>
+                    <p className="ml-4 font-extralight">
+                      {countryData.tld?.join(", ")}
+                    </p>
                   </li>
-                  <li>
+                  <li className="flex flex-row">
                     Currencies:
-                    <p className="ml-2">
+                    <p className="ml-4 font-extralight">
                       {Object.values(countryData.currencies || {})
                         .map((currency) => currency.name)
                         .join(", ")}
                     </p>
                   </li>
-                  <li>
+                  <li className="flex flex-row">
                     Languages:
-                    <p className="ml-2">
+                    <p className="ml-4 font-extralight">
                       {Object.values(countryData.languages || {}).join(", ")}
                     </p>
                   </li>
                 </ul>
                 <br />
-                <div className="grid grid-cols-4 gap-2 w-4/5 text-sm">
+                {/*      <div className="grid grid-cols-4 gap-2 w-4/5 text-sm">
                   <h4>Border countries:</h4>
-                  {/* Dynamically render border countries if available */}
-                  {countryData.borders?.map((border, index) => (
+
+                 {countryData.borders?.map((border, index) => (
                     <button
                       key={index}
-                      className="border-2 font-light shadow-2xl"
+                      className="border-2 font-light shadow-2xl bg-red-200"
                     >
                       {border}
                     </button>
-                  ))}
-                </div>
+                  ))} 
+                </div>*/}
               </div>
             </div>
           </div>

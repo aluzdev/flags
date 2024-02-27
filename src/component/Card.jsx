@@ -2,13 +2,13 @@
 export const Card = ({ population, region, capital, name, flag, onClick }) => {
   return (
     <div
-      className="w-64 bg-slate-600 text-xs text-white font-semibold shadow-lg shadow-zinc-700 rounded-md"
+      className="w-80 bg-slate-50 text-sm font-semibold shadow-lg shadow-zinc-700 rounded-lg"
       onClick={onClick}
     >
-      <img src={flag} alt="" className="w-64 h-48 object-cover" />
+      <img src={flag} alt="" className="w-80 h-48 rounded-lg fit-cover" />
 
-      <div className="p-3 ">
-        <h3 className="font-bold mb-4 text-left text-sm">{name}</h3>
+      <div className="px-5 py-4 ">
+        <h3 className="font-bold mb-4 text-left text-base">{name}</h3>
 
         <ul className="flex flex-col space-y-2">
           <li className="flex">
@@ -24,7 +24,6 @@ export const Card = ({ population, region, capital, name, flag, onClick }) => {
             <p className="font-thin ml-2">{capital}</p>
           </li>
         </ul>
-        <br />
         <br />
       </div>
     </div>
